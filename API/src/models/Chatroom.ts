@@ -1,8 +1,9 @@
-import { DataTypes, HasOneCreateAssociationMixin, Model } from "sequelize"
+import { DataTypes, HasManyCreateAssociationMixin, HasOneCreateAssociationMixin, Model } from "sequelize"
 import sequelize from "../db/config"
 import ChatRoomSetting from "./ChatRoomSetting"
 import Suscription from "./Suscription"
 import { ChatroomAttributes, ChatroomCreationAttributes, IdAttribute } from "../customTypes/typesModels"
+import Message from "./Message"
 
 // type IdAttribute = number
 // interface ChatroomAttributes {
@@ -24,6 +25,8 @@ class ChatRoom extends Model<ChatroomAttributes, ChatroomCreationAttributes>{
     declare createChatRoomSetting: HasOneCreateAssociationMixin<ChatRoomSetting>
 
     declare createSuscription: HasOneCreateAssociationMixin<Suscription>
+
+    declare createMessage: HasManyCreateAssociationMixin<Message>
 
     addNewMessage(new_id_message:IdAttribute){
         let historyMessage = this.historyMessage
