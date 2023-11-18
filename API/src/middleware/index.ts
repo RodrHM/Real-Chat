@@ -3,6 +3,7 @@ import Suscription from "../models/Suscription"
 import Message from "../models/Message"
 import ChatRoom from "../models/Chatroom"
 import ChatRoomSetting from "../models/ChatRoomSetting"
+import User from "../models/User"
 
 export async function roleAdminAuthorization(req:Request, res:Response, next:NextFunction){
     try {
@@ -98,6 +99,21 @@ export async function verifyPrivacyAndWishList(req:Request, res:Response, next:N
         const chatroom = await ChatRoom.findByPk(id_chatroom)
         const verifyWishlist = chatroom?.wishlist.some(id => id===id_friend)
         if(verifyWishlist) return next()
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+}
+
+//-----------------------------------------------------------------------------------------
+
+export async function authenticateUserToken(_req:Request, res:Response, next:NextFunction){
+    try {
+        // const { id_user, id_friend } = req.params
+        // const {id_chatroom} = req.body
+        
+        // const findUser = await User.findByPk(id_user)
+
+        return next()
     } catch (error) {
         return res.status(400).json(error)
     }

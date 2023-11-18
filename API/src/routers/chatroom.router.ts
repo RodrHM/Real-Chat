@@ -3,6 +3,7 @@ import { deleteMessage, modifyMessage, sendMessage } from "../controllers/messag
 import { banUserToChatRoom, createChatRoomGroup, deleteChatRoomGroup, findAllChatRoom, findOneChatRoom, inviteUserToChatRoom } from "../controllers/chatroom.controller";
 import { modifyChatRoomSetting } from "../controllers/chatroomSetting.controller";
 import { roleAdminAuthorization, roleAdminModAuthorization, validateSuscription, verifyMessageSender, verifyPrivacyAndBlackList } from "../middleware";
+import { modifyRoleUser } from "../controllers/suscription.controller";
 
 
 const router = Router()
@@ -23,7 +24,7 @@ router.put('/:id_suscription/modifyChatRoomSetting/:id_chatroom', validateSuscri
 
 // Aca van las rutas para enviar invitaciones y para expulsar usuarios
 router.post('/:id_suscription/inviteFriendToChatRoom/:id_friend', validateSuscription, verifyPrivacyAndBlackList, inviteUserToChatRoom)
-
+router.put('/:id_suscribe/modifyRole/:id_friend', validateSuscription, roleAdminModAuthorization, modifyRoleUser)
 router.delete('/:id_suscription/banUserToChatRoom/:id_friend', validateSuscription, roleAdminModAuthorization, banUserToChatRoom)
 
 // DeleteUserBan
@@ -31,9 +32,7 @@ router.delete('/:id_suscription/banUserToChatRoom/:id_friend', validateSuscripti
 //---------------------------------------------------------------------------------------
 
 router.post('/:id_suscription/sendMessage', validateSuscription, sendMessage)
-
 router.put('/:id_suscription/modifyMessage/:id_message', validateSuscription, verifyMessageSender, modifyMessage)
-
 router.delete('/:id_suscription/deleteMessage/:id_message', validateSuscription, verifyMessageSender, deleteMessage)
 
 //---------------------------------------------------------------------------------------

@@ -1,11 +1,13 @@
 import { Request, Response } from "express"
 import NotificationMessage from "../models/NotificationMessage"
+import { NotificationMessageCreationAttributes } from "../customTypes/typesModels"
 
 export async function createNotificationMessage(req:Request, res:Response){
     try {
-        const { id_user } = req.params
-        const { content } = req.body
-        const newNotidication = await NotificationMessage.create({ id_user: id_user, content })
+        const { /*id_user,*/ id_friend } = req.params
+        const { content, additionalData } = req.body as NotificationMessageCreationAttributes
+
+        const newNotidication = await NotificationMessage.create({ id_user: id_friend, content , additionalData})
         
         return res.status(200).json(newNotidication)
     } catch (error) {

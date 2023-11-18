@@ -49,9 +49,10 @@ export interface NotificationMessageAttributes {
     id: IdAttribute
     id_user: IdAttribute
     content: string
+    additionalData:object
     createDate: string
 }
-export interface NotificationMessageCreationAttributes extends Optional<NotificationMessageAttributes, 'id'|'createDate'> {}
+export interface NotificationMessageCreationAttributes extends Optional<NotificationMessageAttributes, 'id'|'createDate'|'additionalData'> {}
 
 
 export interface MessageAttributes {
