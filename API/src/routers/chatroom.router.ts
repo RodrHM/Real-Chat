@@ -2,7 +2,7 @@ import { Router } from "express";
 import { deleteMessage, modifyMessage, sendMessage } from "../controllers/message.controller";
 import { banUserToChatRoom, createChatRoomGroup, deleteChatRoomGroup, findAllChatRoom, findOneChatRoom, inviteUserToChatRoom } from "../controllers/chatroom.controller";
 import { modifyChatRoomSetting } from "../controllers/chatroomSetting.controller";
-import { roleAdminAuthorization, roleAdminModAuthorization, validateSuscription, verifyMessageSender, verifyPrivacyAndBlackList } from "../middleware";
+import { roleAdminAuthorization, roleAdminModAuthorization, validateSuscription, verifyMessageSender, verifyPrivacyAndBlackList } from "../middlewares";
 import { modifyRoleUser } from "../controllers/suscription.controller";
 
 

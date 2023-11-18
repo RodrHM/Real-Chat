@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { createUser, deleteUser, findAllUsers, findOneUser, modifyUser } from '../controllers/user.controller'
 import { createNotificationMessage, deleteNotidicationMessage } from '../controllers/nofidicationMessage.controller'
 import { suscribeChatRoom, unsuscribeChatRoom } from '../controllers/suscription.controller'
-import { authenticateUserToken, validateSuscription } from '../middleware'
+import { authenticateUserToken, validateSuscription } from '../middlewares'
 
 const router = Router()
 

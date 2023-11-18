@@ -3,7 +3,7 @@ import Suscription from "../models/Suscription"
 import Message from "../models/Message"
 import ChatRoom from "../models/Chatroom"
 import ChatRoomSetting from "../models/ChatRoomSetting"
-import User from "../models/User"
+// import User from "../models/User"
 
 export async function roleAdminAuthorization(req:Request, res:Response, next:NextFunction){
     try {
