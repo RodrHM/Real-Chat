@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize'
 import sequelize from '../db/config'
 import ChatRoom from './Chatroom'
-import { ChatRoomSettingAttributes, ChatRoomSettingCreationAttributes, IdAttribute } from '../customTypes/typesModels'
+import { ChatRoomSettingAttributes, ChatRoomSettingCreationAttributes, IdAttribute, Privacy } from '../customTypes/typesModels'
 
 class ChatRoomSetting extends Model<ChatRoomSettingAttributes, ChatRoomSettingCreationAttributes>{
     declare id: IdAttribute
@@ -9,7 +9,7 @@ class ChatRoomSetting extends Model<ChatRoomSettingAttributes, ChatRoomSettingCr
     declare name: string
     declare description: string
     declare category: string[]
-    declare privacy: 'private'|'public'
+    declare privacy: Privacy
 }
 
 ChatRoomSetting.init({

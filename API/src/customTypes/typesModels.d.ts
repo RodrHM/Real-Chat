@@ -17,27 +17,30 @@ export interface ChatroomAttributes {
     id: IdAttribute
     // mode: 'grupal'|'private'
     wishlist: Array<IdAttribute>
+    blacklist: Array<IdAttribute>
     historyMessage: Array<IdAttribute>
     usersLimit: number 
 }
-export interface ChatroomCreationAttributes extends Optional<ChatroomAttributes, 'id'|'wishlist'|'historyMessage'|'usersLimit'/*|'wishlist'|'historyMessage'*/>{}
+export interface ChatroomCreationAttributes extends Optional<ChatroomAttributes, 'id'|'wishlist'|'historyMessage'|'usersLimit'|'blacklist'>{}
 
+// export enum Privacy{ Private, Public }
+type Privacy = 'Private' | 'Public'
 export interface ChatRoomSettingAttributes {
     id: IdAttribute
     id_chatroom: string
     name: string
     description: string
     category: string[]
-    privacy: 'private'|'public' 
+    privacy: Privacy
 }
 export interface ChatRoomSettingCreationAttributes extends Optional<ChatRoomSettingAttributes, 'id'>{}
 
-
+// export enum Roles { Admin, Mod, User }
 export interface SuscriptionAttributes {
     id: IdAttribute
     id_user: IdAttribute
     id_chatroom: IdAttribute
-    role: 'Admin'|'Mod'|'User'
+    role: 'Admin' | 'Mod' | 'User'
 }
 export interface SuscriptionCreationAttributes extends Optional<SuscriptionAttributes, 'id'>{}
 

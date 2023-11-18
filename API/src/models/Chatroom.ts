@@ -19,6 +19,7 @@ import Message from "./Message"
 class ChatRoom extends Model<ChatroomAttributes, ChatroomCreationAttributes>{
     declare id: IdAttribute
     declare wishlist: Array<IdAttribute>
+    declare blacklist: Array<IdAttribute>
     declare historyMessage: Array<IdAttribute>
     declare usersLimit: number
     
@@ -42,6 +43,31 @@ class ChatRoom extends Model<ChatroomAttributes, ChatroomCreationAttributes>{
     //     if(n>historyMessage.length) return historyMessage
     //     else return historyMessage.slice(historyMessage.length-n)
     // }
+
+    addUserToWishList(id_friend:IdAttribute){
+        let wishlist = this.wishlist
+        wishlist.push(id_friend)
+        this.setDataValue('wishlist', wishlist)
+    }
+
+    removeUserToWishList(id_friend:IdAttribute){
+        let wishlist = this.wishlist
+        wishlist = wishlist.filter( id => id!==id_friend)
+        this.setDataValue('wishlist', wishlist)
+    }
+
+    addUserToBlackList(id_friend:IdAttribute){
+        let blacklist = this.blacklist
+        blacklist.push(id_friend)
+        this.setDataValue('blacklist', blacklist)
+    }
+
+    removeUserToBlackList(id_friend:IdAttribute){
+        let blacklist = this.blacklist
+        blacklist = blacklist.filter( id => id!==id_friend)
+        this.setDataValue('blacklist', blacklist)
+    }
+
 }
 
 ChatRoom.init({
@@ -52,6 +78,12 @@ ChatRoom.init({
     },
     wishlist:{
         type:DataTypes.ARRAY(DataTypes.UUID),
+        allowNull: true,
+        defaultValue: []
+    },
+    blacklist:{
+        type:DataTypes.ARRAY(DataTypes.UUID),
+        allowNull: true,
         defaultValue: []
     },
     historyMessage:{

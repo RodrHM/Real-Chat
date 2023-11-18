@@ -8,7 +8,7 @@ class Suscription extends Model<SuscriptionAttributes, SuscriptionCreationAttrib
     declare id: IdAttribute
     declare id_user: IdAttribute
     declare id_chatroom: IdAttribute
-    declare role: 'Admin'|'Mod'|'User'
+    declare role: 'Admin' | 'Mod' | 'User'
 }
 Suscription.init({
     id:{

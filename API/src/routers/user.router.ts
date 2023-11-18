@@ -1,10 +1,11 @@
 import { Router } from 'express'
 import { createUser, deleteUser, findAllUsers, findOneUser, modifyUser } from '../controllers/user.controller'
 import { createNotificationMessage, deleteNotidicationMessage } from '../controllers/nofidicationMessage.controller'
-import { modifyRoleUser, suscribeChatRoom, unsuscribeChatRoom } from '../controllers/suscription.controllet'
+import { modifyRoleUser, suscribeChatRoom, unsuscribeChatRoom } from '../controllers/suscription.controller'
 
 const router = Router()
 
+// integrar tokens como contraseña y verificar
 router.get('/', findAllUsers)
 
 router.get('/:id', findOneUser)
