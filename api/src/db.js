@@ -6,4 +6,3 @@ mongoose.set('strictQuery', false)
 mongoose.connect(DB_URL)
 .then(()=>console.log('CONEXION A MONGO EXITOSA'))
 .catch((err)=>console.log(`El error de conexion es: ${err}`))
-
