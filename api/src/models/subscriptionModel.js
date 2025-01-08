@@ -5,7 +5,7 @@ const subscriptionSchema = mongoose.Schema({
     server_id:{type: mongoose.Schema.Types.ObjectId, ref: 'server'},
     chatRoom_id:{type: mongoose.Schema.Types.ObjectId, ref: 'chatRoom'},
     role:{type: String },
-    createdAt:{ type: Date, default: Date.now}
+    createdAt:{type: Date, default: Date.now}
 })
 
 const subscriptionModel = mongoose.model('subscription', subscriptionSchema)
