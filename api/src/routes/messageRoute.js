@@ -10,3 +10,5 @@ router.post('/', createMessage)
 router.put('/content/:id', modifyMessage)
 
 router.delete('/:id', deleteMessage)
+
+module.exports = router
